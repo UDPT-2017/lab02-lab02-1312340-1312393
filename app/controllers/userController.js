@@ -3,8 +3,8 @@ var userController = {
     loadLogin: function(req, res) {
         res.render('user/login')
     },
-    loadRegister: function (req, res) {
-        res.render('user/register')
+    loadSignup: function (req, res) {
+        res.render('user/signup')
     }
 };
 

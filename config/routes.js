@@ -8,7 +8,7 @@ module.exports = function(app){
     app.use('/', indexRouter);
     var userRouter = Router()
         .get('/login', controllers.user.loadLogin)
-        .get('/register', controllers.user.loadRegister);
+        .get('/signup', controllers.user.loadSignup);
     app.use('/user', userRouter)
 
 };
