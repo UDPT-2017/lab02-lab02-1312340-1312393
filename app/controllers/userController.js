@@ -13,10 +13,10 @@ var userController = {
         user.password = req.body.password;
         user.save().then(function(user){
           req.session.userId = user.id;
-          req.flash('info', 'Tao tai khoan thanh cong');
+          req.flash('info', 'Tạo tài khoản thành công');
           res.redirect('/');
         }).catch(function(e){
-          req.flash('info', 'Du lieu sai');
+          req.flash('info', 'Nhập dữ liệu sai');
           res.redirect('/user/signup');
         }
 
@@ -25,7 +25,7 @@ var userController = {
     },
     signOut: function(req, res){
       req.session.userId = null;
-      req.flash('info', 'Dang xuat thanh cong');
+      req.flash('info', 'Đăng xuất thành công');
       res.redirect('/');
     },
     signIn: function (req,res) {
@@ -40,11 +40,11 @@ var userController = {
         console.log(user);
         if (user){
           req.session.userId = user.id;
-          req.flash('info', 'Dang nhap thanh cong');
+          req.flash('info', 'Đăng nhập thành công');
           res.redirect('/');
         }
         else{
-          req.flash('info', 'Dang nhap loi');
+          req.flash('info', 'Đăng nhập thất bại');
           res.redirect('/user/signin');
         }
       })
