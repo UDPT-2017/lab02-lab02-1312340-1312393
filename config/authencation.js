@@ -5,7 +5,6 @@ var serialize = function (req, res, next) {
     if(session){
         User.findById(req.session.user_id).then(function (user) {
             req.user = user;
-            res.locals.session = user;
             next();
         }).catch(function (e) {
             res.send(e);

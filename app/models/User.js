@@ -43,17 +43,13 @@ var User = sequelize.define('user', {
 
         }
         ,
-        salt: {
+        password: {
             type: SQ.STRING,
-            allowNull: {
-                args: false
-            }
-        }
-        ,
-        hash: {
-            type: SQ.STRING,
-            allowNull: {
-                args: false
+            validate: {
+              len: {
+                args: [6],
+                msg: 'Must have password'
+              }
             }
         }
     })
