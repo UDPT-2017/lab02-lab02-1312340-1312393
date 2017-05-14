@@ -34,19 +34,19 @@
           <ul class="nav navbar-nav">
             <li id="index"><a href="/">Home</a></li>
           </ul>
-          {{#if session }}
+          {{#if user }}
             <ul class="nav navbar-nav navbar-right">
-              <form id="form-logout" action="user/logout" method="post">
-                <label style="color: azure">{{session.name}}</label>
+              <form id="form-signout" action="user/signOut" method="get">
+                <label style="color: azure; margin-right: 20px" >{{user.name}}</label>
 
-                <input id="logout" type="submit" class="btn btn-primary" value="Logout">
+                <input id="signout" style="margin-top: 5px" type="submit" class="btn btn-primary" value="Sign Out">
               </form>
 
             </ul>
 
           {{else}}
             <ul class="nav navbar-nav navbar-right">
-              <li id="login"><a href="/user/login">Login</a></li>
+              <li id="signin"><a href="/user/signin">Sign In</a></li>
               <li id="signup"><a href="/user/signup">Sign Up</a></li>
             </ul>
           {{/if}}

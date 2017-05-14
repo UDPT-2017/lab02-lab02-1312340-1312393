@@ -6,16 +6,16 @@ var User = sequelize.define('user', {
             type: SQ.STRING,
             allowNull: {
                 args: false,
-                msg: 'Must have email '
+                msg: 'Bạn cần phải nhập email'
             },
             unique: {
                 args: true,
-                msg: 'Email address already in use!'
+                msg: 'Email này đã được sử dụng'
             },
             validate: {
                 isEmail: {
                     args: true,
-                    msg: 'Must be real email'
+                    msg: 'Đây phải là email thật'
                 }
             }
 
@@ -24,36 +24,32 @@ var User = sequelize.define('user', {
             type: SQ.STRING,
             allowNull: {
                 args: false,
-                msg: 'Must have phone number '
+                msg: 'Bạn cần phải nhập số điện thoại'
             },
         },
         name: {
             type: SQ.STRING,
             allowNull: {
                 args: false,
-                msg: 'Must have a name '
+                msg: 'Bạn cần phải nhập tên'
             }
             ,
             validate: {
                 len: {
                     args: [1],
-                    msg: 'Must have a name'
+                    msg: 'Tên phải có ít nhất 1 ký tự'
                 }
             }
 
         }
         ,
-        salt: {
+        password: {
             type: SQ.STRING,
-            allowNull: {
-                args: false
-            }
-        }
-        ,
-        hash: {
-            type: SQ.STRING,
-            allowNull: {
-                args: false
+            validate: {
+              len: {
+                args: [6],
+                msg: 'Mật khẩu phải có ít nhất 6 ký tự'
+              }
             }
         }
     })

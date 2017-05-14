@@ -13,12 +13,11 @@ var sequelize = new Sequelize('lab2', 'postgres', '', {
 sequelize
     .authenticate()
     .then(function(err) {
-        console.log('Connection has been established successfully.');
+        console.log('Kết nối thành công');
     })
     .catch(function (err) {
-        console.log('Unable to connect to the database:', err);
+        console.log('Không thể kết nối đến database', err);
     });
 
 
 module.exports = sequelize;
-
