@@ -8,11 +8,11 @@ module.exports = function(app){
     app.use('/', indexRouter);
 
     var userRouter = Router()
-        .get('/login', controllers.user.loadLogin)
+        .get('/signin', controllers.user.loadSignin)
         .get('/signup', controllers.user.loadSignup)
         .post('/signup', controllers.user.postSignup)
         .get('/signOut', controllers.user.signOut)
-        .post('/login', controllers.user.signIn)
+        .post('/signin', controllers.user.signIn)
 
     app.use('/user',userRouter);
 };

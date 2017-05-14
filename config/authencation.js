@@ -11,8 +11,8 @@ var serialize = function (req, res, next) {
         })
     }
     else{
-        req.flash('info', 'need to login');
-        res.redirect('/user/login');
+        req.flash('info', 'Bạn cần phải đăng nhập trước');
+        res.redirect('/user/sign in');
     }
 };
 

@@ -1,7 +1,7 @@
 const User = require('../db/db').User;
 var userController = {
-    loadLogin: function(req, res) {
-        res.render('user/login')
+    loadSignin: function(req, res) {
+        res.render('user/signin')
     },
     loadSignup: function (req, res) {
         res.render('user/signup')
@@ -45,7 +45,7 @@ var userController = {
         }
         else{
           req.flash('info', 'Dang nhap loi');
-          res.redirect('/user/login');
+          res.redirect('/user/signin');
         }
       })
 
