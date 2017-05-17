@@ -14,5 +14,9 @@ module.exports = function(app){
         .get('/signOut', controllers.user.signOut)
         .post('/signin', controllers.user.signIn)
 
+    var aboutRouter = Router()
+        .get('/', controllers.about.index);
+
     app.use('/user',userRouter);
+    app.use('/about', aboutRouter);
 };
