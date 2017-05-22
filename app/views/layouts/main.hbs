@@ -27,7 +27,7 @@
 
 <body>
     <div>
-        <nav class="navbar navbar-inverse ">
+        <nav class="navbar navbar-default ">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -43,13 +43,14 @@
                         <li id="index"><a href="/">Home</a></li>
                         <li id="about"><a href="/about">About</a></li>
                          <li id="message"><a href="/message">Message</a></li>
+                         <li id="Friend"><a href="/friend">Friend</a></li>
                     </ul>
                     {{#if session }}
                         <ul class="nav navbar-nav navbar-right">
                             <form id="form-signout" action="user/signOut" method="get">
-                                <label style="color: azure; margin-right: 20px">{{session.name}}</label>
+                                <label style="margin-right: 20px">{{session.name}}</label>
 
-                                <input id="signout" style="margin-top: 5px" type="submit" class="btn btn-primary" value="Sign Out">
+                                <input id="signout" style="margin-top: 5px" type="submit" class="btn btn-danger" value="Sign Out">
                             </form>
 
                         </ul>

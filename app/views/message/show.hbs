@@ -3,23 +3,26 @@
     <div class="form-group">
         <label for="inputTo" class="control-label col-xs-2">From</label>
         <div class="col-xs-8">
-            <input name="to" type="text" class="form-control" id="inputTo" placeholder="email user" readonly value="{{message.from.email}}">
+            <input name="to" type="text" " id="inputTo" placeholder="email user" readonly value="{{message.from.email}}">
         </div>
     </div>
     <div class="form-group">
         <label for="inputTitle" class="control-label col-xs-2">Title</label>
         <div class="col-xs-8">
-            <input name="title" type="text" class="form-control" id="inputTitle" placeholder="Title" readonly value="{{message.title}}">
+            <input name="title" type="text"  id="inputTitle" placeholder="Title" readonly value="{{message.title}}">
         </div>
     </div>
     <div class="form-group">
-        <div class="col-xs-8">
+    <div class ="control-label col-xs-2">Nội Dung</div>
+    </div>
+    <div class="well well-lg">
+        <div class="col-xs-6">
             {{{html}}}
         </div>
     </div>
     <div class="form-group">
         <div class="col-xs-offset-4 col-xs-10">
-            <a class="btn btn-success" href="/message">Back</a>
+            <a class="btn btn-info" href="/message">Back</a>
         </div>
     </div>
 </form>

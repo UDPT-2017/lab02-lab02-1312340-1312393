@@ -1,16 +1,14 @@
-<button class="btn btn-success col-md-12" onclick="Refresh()">
-    Refresh
-</button>
-<br> <br>
-<a class="btn btn-success col-md-12" href="/message/new">
-    add a new message
+
+<a class="btn btn-primary col-md-1" href="/message/new">
+    new message
 </a>
 <br> <br>
-<button class="btn btn-success col-md-6" onclick="SentMessage()">
-    Sent
+<button class="btn btn-primary col-md-1" onclick="SentMessage()">
+    Tin nhắn đi
 </button>
-<button class="btn btn-success col-md-6" onclick="Receive()">
-    Received
+<br> <br>
+<button class="btn btn-danger col-md-1" onclick="Receive()">
+    Tin nhắn đến
 </button>
 <div id="last-refresh">
 
@@ -18,8 +16,8 @@
 
 <div class=" col-md-12" id="messageList">
 </div>
-<button class="btn btn-information col-md-12" id="paginate" onclick="Add10Message()">
-    Add 10 message
+<button class="btn btn-information col-md-2" id="paginate" onclick="AddMessage()">
+    load messages
 </button>
 
 <script>
@@ -37,18 +35,7 @@
     function pad(val) {
         return val > 9 ? val : "0" + val;
     }
-    function CountUp() {
-        var sec = 0;
-        setInterval(function () {
-            var a = pad(++sec % 60);
-            var b = pad(parseInt(sec / 60, 10));
-            $('#last-refresh').html("last refresh is " + b + ":" + a + " ago");
-        }, 1000);
-        setInterval(function () {
-            Refresh();
-            sec = 0;
-        }, 5000);
-    }
+
     function Receive() {
         Check = 'R';
         var $message = $('#messageList');
@@ -71,7 +58,6 @@
         });
     }
     function SentMessage() {
-        waypoint.destroy();AutoLoad10();
         Check = 'S';
         var $message = $('#messageList');
         $message.empty();
@@ -93,7 +79,7 @@
             }
         });
     }
-    function AddReceive10() {
+    function AddReceive() {
         var $message = $('#messageList');
         $.ajax({
             url: 'http://localhost:3000/message/get?number=' + ReceivePaginate,
@@ -113,7 +99,7 @@
             }
         });
     }
-    function AddSentMessage10() {
+    function AddSentMessage() {
         var $message = $('#messageList');
         $.ajax({
             url: 'http://localhost:3000/message/sent?number=' + SentPaginate,
@@ -134,29 +120,13 @@
             }
         });
     }
-    function Add10Message() {
+    function AddMessage() {
         if (Check === "R") {
-            AddReceive10();
+            AddReceive();
         } else {
-            AddSentMessage10();
+            AddSentMessage();
         }
     }
-    function AutoLoad10() {
-        waypoint = new Waypoint({
-            element: document.getElementById('paginate'),
-            handler: function (direction) {
-                if (direction === "down") {
-                    Add10Message();
-                    waypoint.destroy();
-                    AutoLoad10();
-                }
-            },
-            offset: '90%'
-        });
-    }
-    $(function () {
-        AutoLoad10();
-        Receive();
-        CountUp();
-    });
+
+   
 </script>
