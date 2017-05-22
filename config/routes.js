@@ -25,8 +25,14 @@ module.exports = function(app){
 
     var aboutRouter = Router()
         .get('/', controllers.about.index);
+    var friendRouter = Router()
+        .get('/add', controllers.friend.addFriend)
+        .get('/remove', controllers.friend.removeFriend)
+        .get('/get', controllers.friend.getFriend)
+        .get('/', controllers.friend.index);
 
     app.use('/user',userRouter);
     app.use('/about', aboutRouter);
     app.use('/message', Authentication, messageRouter);
+    app.use('/friend', Authentication, friendRouter);
 };

@@ -1,0 +1,58 @@
+<div class="col-md-offset-3 col-md-4">
+    <h2>Danh sách tất cả người dùng</h2>
+</div>
+<div class="col-md-12" id="friendList">
+</div>
+<script>
+    function AddFriend(userId) {
+        $.ajax({
+            url: 'http://localhost:3000/friend/add?id='+userId,
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (success) {
+                if(success){
+                    GetFriend()
+                }
+            }
+        });
+    }
+    function RemoveFriend(userId) {
+        $.ajax({
+            url: 'http://localhost:3000/friend/remove?id='+userId,
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (success) {
+                if(success){
+                    GetFriend()
+                }
+            }
+        });
+    }
+    function GetFriend() {
+        Check = 'R';
+        var $friendList = $('#friendList');
+        $friendList.empty();
+        $.ajax({
+            url: 'http://localhost:3000/friend/get',
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (friends) {
+                $.each(friends, function (i, friend) {
+                    var a
+                    if (friend.friend) {
+                        a = `<div class="col-sm-4 friend-block"><label >  ${friend.name}  </label><button type="submit"  style="margin-left: 20px " onclick="RemoveFriend(${friend.id})">Hủy bạn</button> </div> <br><br>`
+                    } else {
+                        a = `<div class="col-sm-4 friend-block"><label >  ${friend.name}  </label><button type="submit" class="btn btn-info" style="margin-left: 20px " onclick="AddFriend(${friend.id})">thêm bạn</button> </div> <br><br>`
+                    }
+                    $friendList.append(a);
+                })
+            }
+        });
+    }
+    $(function () {
+        GetFriend();
+    });
+</script>

@@ -43,14 +43,10 @@ var userController = {
 
         console.log(user);
         if (user){
-          var session =req.session;
-          req.session.uniqueId = user.id;
-          session.uniqueID = user.id;
-          //session.uniqueID = req.body.email;
-          console.log(session.uniqueId);
+            req.session.userId = user.id;
           
           req.flash('info', 'Đăng nhập thành công');
-          res.redirect('/');
+          res.redirect('/message');
         }
         else{
           req.flash('info', 'Đăng nhập thất bại');
