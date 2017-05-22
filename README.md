@@ -6,7 +6,7 @@ Thành viên:
 * [x] **1312393** Phùng Hải Nguyên (1312393)
 * [x] **1312340** Lê Quốc Tấn Lộc (1312340)
 
-URL: **URL hosting của bài tập**
+URL: https://warm-sea-66197.herokuapp.com/
 
 ## Yêu cầu
 
