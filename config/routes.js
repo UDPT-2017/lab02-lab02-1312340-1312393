@@ -1,5 +1,5 @@
 var Router = require('express').Router;
-
+const Authentication = require('../config/authentication');
 var controllers = require('../app/controllers');
 
 module.exports = function(app){
@@ -14,9 +14,19 @@ module.exports = function(app){
         .get('/signOut', controllers.user.signOut)
         .post('/signin', controllers.user.signIn)
 
+    var messageRouter = Router()
+        .get('/', controllers.message.index)
+        .get('/get', controllers.message.getMessage)
+        .get('/sent', controllers.message.sentMessage)
+        .get('/new', controllers.message.newMessage)
+        .post('/new', controllers.message.createMessage)
+        .get('/:id', controllers.message.show);
+
+
     var aboutRouter = Router()
         .get('/', controllers.about.index);
 
     app.use('/user',userRouter);
     app.use('/about', aboutRouter);
+    app.use('/message', Authentication, messageRouter);
 };

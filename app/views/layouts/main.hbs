@@ -42,11 +42,12 @@
                     <ul class="nav navbar-nav">
                         <li id="index"><a href="/">Home</a></li>
                         <li id="about"><a href="/about">About</a></li>
+                         <li id="message"><a href="/message">Message</a></li>
                     </ul>
-                    {{#if user }}
+                    {{#if session }}
                         <ul class="nav navbar-nav navbar-right">
                             <form id="form-signout" action="user/signOut" method="get">
-                                <label style="color: azure; margin-right: 20px">{{user.name}}</label>
+                                <label style="color: azure; margin-right: 20px">{{session.name}}</label>
 
                                 <input id="signout" style="margin-top: 5px" type="submit" class="btn btn-primary" value="Sign Out">
                             </form>
