@@ -24,9 +24,13 @@ var userController = {
 
     },
     signOut: function(req, res){
-      req.session.userId = null;
-      req.flash('info', 'Đăng xuất thành công');
-      res.redirect('/');
+      req.session.destroy(function(){
+         res.redirect('/user/signin');
+        //req.flash('info', 'Đăng xuất thành công');
+   
+
+});
+      
     },
     signIn: function (req,res) {
       User.findOne({
@@ -39,7 +43,12 @@ var userController = {
 
         console.log(user);
         if (user){
-          req.session.userId = user.id;
+          var session =req.session;
+          req.session.uniqueId = user.id;
+          session.uniqueID = user.id;
+          //session.uniqueID = req.body.email;
+          console.log(session.uniqueId);
+          
           req.flash('info', 'Đăng nhập thành công');
           res.redirect('/');
         }
